@@ -51,9 +51,9 @@ public class VolunteerPage {
     }
 
     public void fillApplicantDetails(){
-        enterFirstName("Jim");
-        enterLastName("Parson");
+        enterFirstName("Joe");
+        enterLastName("Doe");
         enterPhone("1234567890");
-        enterEmail("jim@gmail.com");
+        enterEmail("joed@gmail.com");
     }
 }

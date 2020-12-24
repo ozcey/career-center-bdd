@@ -53,6 +53,7 @@ public class ApplicantPage {
     public WebElement getBackText(){
         return back;
     }
+
     public void enterFirstName(String fName){
         firstName.sendKeys(fName);
     }
