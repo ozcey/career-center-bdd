@@ -28,10 +28,10 @@ public class ApplicantStepDefinitions {
         pageObjectManager = utils.getPageObjectManager();
     }
 
-    @After
-    public void after() {
-        utils.tearDown();
-    }
+//    @After
+//    public void after() {
+//        utils.tearDown();
+//    }
 
     @Given("I navigate to home page on the website")
     public void i_navigate_to_home_page_on_the_website() {
@@ -86,32 +86,34 @@ public class ApplicantStepDefinitions {
 
     @Then("I enter a valid street name")
     public void i_enter_a_valid_street_name() {
-
+        applicantPage.enterAddress("123 Main St");
     }
 
     @Then("I enter a valid city")
     public void i_enter_a_valid_city() {
-
+        applicantPage.enterCity("Columbia");
     }
 
     @Then("I enter a valid state")
     public void i_enter_a_valid_state() {
-
+        applicantPage.enterState("MD");
     }
 
     @Then("I enter a valid zip code")
     public void i_enter_a_valid_zip_code() {
-
+        applicantPage.enterZipcode("12345");
     }
 
     @When("I click on the next button on the address page")
     public void i_click_on_the_next_button_on_the_address_page() {
-
+        applicantPage.clickNextOnAddress();
     }
 
     @Then("I should be taken the successful job details form")
     public void i_should_be_taken_the_successful_job_details_form() {
-
+        String text = applicantPage.getNextTextOnJob().getText();
+        utils.waitUntil(applicantPage.getNextTextOnJob());
+        assertEquals("Next", text);
     }
 
     @Then("I click on the Areas of Interest dropdown menu")
@@ -121,12 +123,12 @@ public class ApplicantStepDefinitions {
 
     @Then("I select a value in Areas of Interest")
     public void i_select_a_value_in_Areas_of_Interest() {
-
+      applicantPage.enterAreaOfInterest("IT");
     }
 
     @Then("I enter a valid age")
     public void i_enter_a_valid_age() {
-
+        applicantPage.enterAge(32);
     }
 
     @Then("I click on the Gender dropdown menu")
@@ -136,12 +138,12 @@ public class ApplicantStepDefinitions {
 
     @Then("I select a value in gender")
     public void i_select_a_value_in_gender() {
-
+        applicantPage.enterGender("Male");
     }
 
     @Then("I enter a valid degree")
     public void i_enter_a_valid_degree() {
-
+        applicantPage.enterDegree("Bachelor");
     }
 
     @Then("I click on the Languages dropdown menu")
@@ -151,22 +153,24 @@ public class ApplicantStepDefinitions {
 
     @Then("I select a value in languages")
     public void i_select_a_value_in_languages() {
-
+        applicantPage.enterLanguage("English");
     }
 
     @When("I click on the next button on the job details page")
     public void i_click_on_the_next_button_on_the_job_details_page() {
-
+        applicantPage.clickNextOnJob();
     }
 
     @Then("I should be taken the successful done page")
     public void i_should_be_taken_the_successful_done_page() {
-
+        String text = applicantPage.getSubmitMessage().getText();
+        utils.waitUntil(applicantPage.getSubmitMessage());
+        assertEquals("You are now done. Please submit the form.", text);
     }
 
     @When("I click on the submit button")
     public void i_click_on_the_submit_button() {
-
+        applicantPage.clickSubmit();
     }
 
     @Then("I should see successful message on the page")
