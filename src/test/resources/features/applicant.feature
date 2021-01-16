@@ -17,13 +17,10 @@ Feature: Validating Applicant page functionality
     And I enter a valid zip code
     When I click on the next button on the address page
     Then I should be taken the successful job details form
-    And I click on the Areas of Interest dropdown menu
     And I select a value in Areas of Interest
     And I enter a valid age
-    And I click on the Gender dropdown menu
     And I select a value in gender
     And I enter a valid degree
-    And I click on the Languages dropdown menu
     And I select a value in languages
     When I click on the next button on the job details page
     Then I should be taken the successful done page

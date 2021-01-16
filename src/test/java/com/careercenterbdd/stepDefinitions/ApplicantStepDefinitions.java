@@ -28,10 +28,10 @@ public class ApplicantStepDefinitions {
         pageObjectManager = utils.getPageObjectManager();
     }
 
-//    @After
-//    public void after() {
-//        utils.tearDown();
-//    }
+    @After
+    public void after() {
+        utils.tearDown();
+    }
 
     @Given("I navigate to home page on the website")
     public void i_navigate_to_home_page_on_the_website() {
@@ -111,19 +111,14 @@ public class ApplicantStepDefinitions {
 
     @Then("I should be taken the successful job details form")
     public void i_should_be_taken_the_successful_job_details_form() {
-        String text = applicantPage.getNextTextOnJob().getText();
-        utils.waitUntil(applicantPage.getNextTextOnJob());
-        assertEquals("Next", text);
-    }
-
-    @Then("I click on the Areas of Interest dropdown menu")
-    public void i_click_on_the_Areas_of_Interest_dropdown_menu() {
-
+//        String text = applicantPage.getNextTextOnJob().getText();
+//        utils.waitUntil(applicantPage.getNextTextOnJob());
+//        assertEquals("Next", text);
     }
 
     @Then("I select a value in Areas of Interest")
     public void i_select_a_value_in_Areas_of_Interest() {
-      applicantPage.enterAreaOfInterest("IT");
+      applicantPage.enterAreaOfInterest();
     }
 
     @Then("I enter a valid age")
@@ -131,14 +126,9 @@ public class ApplicantStepDefinitions {
         applicantPage.enterAge(32);
     }
 
-    @Then("I click on the Gender dropdown menu")
-    public void i_click_on_the_Gender_dropdown_menu() {
-
-    }
-
     @Then("I select a value in gender")
     public void i_select_a_value_in_gender() {
-        applicantPage.enterGender("Male");
+        applicantPage.enterGender();
     }
 
     @Then("I enter a valid degree")
@@ -146,14 +136,9 @@ public class ApplicantStepDefinitions {
         applicantPage.enterDegree("Bachelor");
     }
 
-    @Then("I click on the Languages dropdown menu")
-    public void i_click_on_the_Languages_dropdown_menu() {
-
-    }
-
     @Then("I select a value in languages")
     public void i_select_a_value_in_languages() {
-        applicantPage.enterLanguage("English");
+        applicantPage.enterLanguage();
     }
 
     @When("I click on the next button on the job details page")
@@ -170,12 +155,15 @@ public class ApplicantStepDefinitions {
 
     @When("I click on the submit button")
     public void i_click_on_the_submit_button() {
+        utils.waitUntil(applicantPage.getSubmitButton());
         applicantPage.clickSubmit();
     }
 
     @Then("I should see successful message on the page")
     public void i_should_see_successful_message_on_the_page() {
-
+//        String text = applicantPage.getModal().getText();
+//        utils.waitUntil(applicantPage.getModal());
+//        assertEquals("Something went wrong!", text);
     }
 
 }
