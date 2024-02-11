@@ -3,7 +3,6 @@ package com.oz.career_center_bdd.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends AbstractPage {
 	
@@ -37,7 +36,7 @@ public class LoginPage extends AbstractPage {
 	}
 
 	public String getLoginTitle() {
-		this.webDriverWait.until(ExpectedConditions.visibilityOf(loginTitle));
+		waitUntil(loginTitle);
 		return this.loginTitle.getText();
 	}
 
@@ -57,7 +56,7 @@ public class LoginPage extends AbstractPage {
 	}
 	
 	public String getUserTitle() {
-		this.webDriverWait.until(ExpectedConditions.visibilityOf(userTitle));
+		waitUntil(userTitle);
 		return userTitle.getText();
 	}
 	

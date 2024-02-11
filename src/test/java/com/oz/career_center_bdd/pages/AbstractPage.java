@@ -3,7 +3,9 @@ package com.oz.career_center_bdd.pages;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
@@ -13,6 +15,10 @@ public abstract class AbstractPage {
 	public AbstractPage(WebDriver driver) {
 		this.webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		PageFactory.initElements(driver, this);
+	}
+	
+	protected void waitUntil(WebElement element) {
+		this.webDriverWait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
 	

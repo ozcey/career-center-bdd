@@ -2,9 +2,12 @@ package com.oz.career_center_bdd.stepdefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Map;
+
 import com.oz.career_center_bdd.pages.CareerAppPageFactory;
 import com.oz.career_center_bdd.pages.VolunteerPage;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.BeforeStep;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -48,32 +51,13 @@ public class VolunteerStepDefs {
 		String volunteerTitle = volunteerPage.getVolunteerFormTitle();
 		assertEquals(volunteerTitle, "Volunteer Sign Up Form");
 	}
-
-	@When("^User enters name (.+)$")
-	public void user_enters_name(String name) {
-		volunteerPage.enterName(name);
-	}
 	
-	@Then("^User enters email (.+)$")
-	public void user_enters_email(String email) {
-	   volunteerPage.enterEmail(email);
+	@Then("User fills out sign up form")
+	public void user_fills_out_sign_up_form(DataTable dataTable) {
+		Map<String, String> formValues = dataTable.asMap(String.class, String.class);
+		volunteerPage.fillOutForm(formValues);
 	}
-	@Then("User enters phone (.+)$")
-	public void user_enters_phone(String phone) {
-	   volunteerPage.enterPhone(phone);
-	}
-	@Then("^User enters job title (.+)$")
-	public void user_enters_job_title(String jobTitle) {
-	   volunteerPage.enterJobTitle(jobTitle);
-	}
-	@Then("^User enters industry (.+)$")
-	public void user_enters_industry_it(String indsutry) {
-	    volunteerPage.enterIndustry(indsutry);
-	}
-	@Then("^User enters area of interest (.+)$")
-	public void user_enters_area_of_interest(String areaOfInterest) {
-	  volunteerPage.enterAreaOfInterest(areaOfInterest);
-	}
+
 
 	@When("User clicks on submit button")
 	public void user_clicks_on_submit_button() {

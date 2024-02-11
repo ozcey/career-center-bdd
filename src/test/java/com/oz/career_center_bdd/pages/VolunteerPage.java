@@ -1,9 +1,10 @@
 package com.oz.career_center_bdd.pages;
 
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class VolunteerPage extends AbstractPage {
 	
@@ -55,7 +56,7 @@ public class VolunteerPage extends AbstractPage {
 	}
 	
 	public String getVolunteerTitle() {
-		this.webDriverWait.until(ExpectedConditions.visibilityOf(volunteerTitle));
+		waitUntil(volunteerTitle);
 		return this.volunteerTitle.getText();
 	}
 	
@@ -64,33 +65,17 @@ public class VolunteerPage extends AbstractPage {
 	}
 	
 	public String getVolunteerFormTitle() {
-		this.webDriverWait.until(ExpectedConditions.visibilityOf(volunteerFormTitle));
+		waitUntil(volunteerFormTitle);
 		return this.volunteerFormTitle.getText();
 	}
 	
-	public void enterName(String name) {
-		this.name.sendKeys(name);
-	}
-	
-	public void enterPhone(String phone) {
-		this.phone.sendKeys(phone);
-	}
-	
-	public void enterEmail(String email) {
-		this.email.sendKeys(email);
-	}
-	
-
-	public void enterJobTitle(String jobTitle) {
-		this.jobTitle.sendKeys(jobTitle);
-	}
-	
-	public void enterIndustry(String industry) {
-		this.industry.sendKeys(industry);
-	}
-	
-	public void enterAreaOfInterest(String areaOfInterest) {
-		this.areaOfInterest.sendKeys(areaOfInterest);
+	public void fillOutForm(Map<String, String> values) {
+		this.name.sendKeys(values.get("name"));
+		this.email.sendKeys(values.get("email"));
+		this.phone.sendKeys(values.get("phone"));
+		this.jobTitle.sendKeys(values.get("job_title"));
+		this.industry.sendKeys(values.get("industry"));
+		this.areaOfInterest.sendKeys(values.get("area_of_interest"));
 	}
 	
 	public void clickSubmitButton() {
@@ -98,7 +83,7 @@ public class VolunteerPage extends AbstractPage {
 	}
 	
 	public String getSuccessMessage() {
-		this.webDriverWait.until(ExpectedConditions.visibilityOf(successMessage));
+		waitUntil(successMessage);
 		return this.successMessage.getText();
 	}
 	

@@ -21,10 +21,10 @@ public class LoginStepDefs {
 		loginPage = new CareerAppPageFactory(baseTest.getDriver()).getLoginPage();
 	}
 
-//	@Given("User navigates to home page")
-//	public void user_navigates_to_home_page() {
-//		baseTest.navigateToHome();
-//	}
+	@Given("User navigates to home page")
+	public void user_navigates_to_home_page() {
+		baseTest.navigateToHome();
+	}
 
 	@Given("User clicks on login button on home page")
 	public void user_clicks_on_login_button_on_home_page() {
