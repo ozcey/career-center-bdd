@@ -5,10 +5,11 @@ import static org.junit.Assert.assertEquals;
 import java.util.Map;
 
 import com.oz.career_center_bdd.pages.CareerAppPageFactory;
+import com.oz.career_center_bdd.pages.DriverFactory;
 import com.oz.career_center_bdd.pages.VolunteerPage;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.BeforeStep;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,17 +18,11 @@ public class VolunteerStepDefs {
 	
 	
 	private VolunteerPage volunteerPage;
-	private BaseTest baseTest;
 	
-	@BeforeStep
+	@Before
 	public void beforeTest() {
-		baseTest = new BaseTest();
-		volunteerPage = new CareerAppPageFactory(baseTest.getDriver()).getVolunteerPage();
-	}
-	
-	@Given("User navigates to home page")
-	public void user_navigates_to_home_page() {
-		baseTest.navigateToHome();
+		CareerAppPageFactory careerAppPageFactory = new CareerAppPageFactory(DriverFactory.getDriver());
+		volunteerPage = careerAppPageFactory.getVolunteerPage();
 	}
 
 	@Given("User clicks on volunteer button on home page")

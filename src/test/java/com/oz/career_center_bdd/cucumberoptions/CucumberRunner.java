@@ -9,6 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"com/oz/career_center_bdd/stepdefinitions"},
+        plugin = { "pretty", "html:target/cucumber-reports.html" },
         tags = "@run"
 )
 public class CucumberRunner {

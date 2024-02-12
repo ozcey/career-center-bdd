@@ -1,10 +1,8 @@
-
+@run
 Feature: Validating Login functionality
 
-
   Scenario Outline: User wants to log in to account with valid credentials
-    Given User navigates to home page
-    And User clicks on login button on home page
+    Given User clicks on login button on home page
     Then User should be taken to login page
     And User enters a valid username <username>
     And User enters a valid password <password>
@@ -16,8 +14,7 @@ Feature: Validating Login functionality
       | admin    | password |
 
   Scenario Outline: User wants to log out of account
-    Given User navigates to home page
-    And User clicks on login button on home page
+    Given User clicks on login button on home page
     Then User should be taken to login page
     And User enters a valid username <username>
     And User enters a valid password <password>

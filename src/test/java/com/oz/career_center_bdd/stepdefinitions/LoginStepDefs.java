@@ -3,9 +3,10 @@ package com.oz.career_center_bdd.stepdefinitions;
 import static org.junit.Assert.assertEquals;
 
 import com.oz.career_center_bdd.pages.CareerAppPageFactory;
+import com.oz.career_center_bdd.pages.DriverFactory;
 import com.oz.career_center_bdd.pages.LoginPage;
 
-import io.cucumber.java.BeforeStep;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,21 +14,17 @@ import io.cucumber.java.en.When;
 public class LoginStepDefs {
 
 	private LoginPage loginPage;
-	private BaseTest baseTest;
 
-	@BeforeStep
+	@Before
 	public void beforeTest() {
-		baseTest = new BaseTest();
-		loginPage = new CareerAppPageFactory(baseTest.getDriver()).getLoginPage();
+		CareerAppPageFactory careerAppPageFactory = new CareerAppPageFactory(DriverFactory.getDriver());
+		loginPage = careerAppPageFactory.getLoginPage();
 	}
-
-	@Given("User navigates to home page")
-	public void user_navigates_to_home_page() {
-		baseTest.navigateToHome();
-	}
+	
 
 	@Given("User clicks on login button on home page")
 	public void user_clicks_on_login_button_on_home_page() {
+		
 		loginPage.clickLoginButtonOnNavbar();
 	}
 
